@@ -8,7 +8,7 @@ export interface Game {
     options: string[];
     startTime: Date;
     endTime: Date;
-    currectOptions: number[];
+    currectOption: string[];
     createdAt: Date;
     updatedAt: Date;
 }

@@ -4,12 +4,10 @@ import RecordImage from "@/public/images/record1.png";
 import { useGetGameByIdQuery } from "@/redux/services/gameService";
 import Loader from "./Loader";
 import { GameSubmission } from "@/redux/types";
-import { useState } from "react";
 
 const RecordCard = ({ submission }: { submission: GameSubmission }) => {
-    const { data, isLoading } = useGetGameByIdQuery(submission?.gameId);
-    const game = data?.game;
-    console.log("game", game.currectOption);
+    const { data: game, isLoading } = useGetGameByIdQuery(submission?.gameId);
+
     const checkCorrect = (gameOption: string[], userOption: string[]) => {
         const gameStr = gameOption.join(",");
         const userStr = userOption.join(",");
@@ -30,7 +28,7 @@ const RecordCard = ({ submission }: { submission: GameSubmission }) => {
                 </div>
             </div>
             <div className="flex flex-col p-3 pt-2">
-                <p className="">{checkCorrect(game?.currectOption, submission?.userOptions) ? "Next 2 drinks on us...!" : "Better luck next time...!"}</p>
+                <p className="">{checkCorrect(game?.currectOption || [], submission?.userOptions || []) ? "Next 2 drinks on us...!" : "Better luck next time...!"}</p>
             </div>
         </div>
     )

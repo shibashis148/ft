@@ -14,9 +14,8 @@ import { useGetCouponCodeQuery } from "@/redux/services/couponCode";
 const GamePage = () => {
     const { gameId } = useParams();
     const router = useRouter();
-    const { data, isLoading, isError } = useGetGameByIdQuery(gameId as string);
+    const { data: game, isLoading, isError } = useGetGameByIdQuery(gameId as string);
     const [disableSubmit, setDisableSubmit] = useState(true);
-    const game = data?.game;
 
     const [steps, setSteps] = useState<number>(1);
     const [couponCode, setCouponCode] = useState<string>('');

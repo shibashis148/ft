@@ -6,8 +6,7 @@ import { useGetAllGameSubmissionsQuery } from "@/redux/services/gameSubmission";
 import { GameSubmission } from "@/redux/types";
 
 const ProfilePage = () => {
-    const { data, isLoading } = useGetAllGameSubmissionsQuery();
-    const submissions = data?.gameSubmissions;
+    const { data: submissions, isLoading } = useGetAllGameSubmissionsQuery();
 
     if (isLoading) return <Loader />;
     return (
